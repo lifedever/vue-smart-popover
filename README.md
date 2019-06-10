@@ -1,5 +1,7 @@
 # vue-smart-popover
 
+## 截图
+![](./demo.png)
 ## Project setup
 ```
 yarn install

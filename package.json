@@ -1,7 +1,7 @@
 {
     "name": "vue-smart-popover",
     "version": "1.0.0",
-    "private": true,
+    "private": false,
     "main": "./dist/smartPopover.common.js",
     "scripts": {
         "serve": "vue-cli-service serve",

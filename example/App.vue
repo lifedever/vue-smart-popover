@@ -1,15 +1,8 @@
 <template>
     <div id="app">
-        <smart-popover>
+        <smart-popover title="这是标题啊这是标题">
             <a href="#" @click.prevent="clickMe">点我弹出</a>
             <div slot="content">Smart Popover Content</div>
-        </smart-popover>
-
-        <smart-popover>
-            <a href="#">我说呢</a>
-            <div slot="content">
-                fuck，我也不知道啊
-            </div>
         </smart-popover>
     </div>
 </template>

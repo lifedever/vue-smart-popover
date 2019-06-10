@@ -1,6 +1,6 @@
 {
     "name": "vue-smart-popover",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "private": true,
     "main": "./dist/smartPopover.common.js",
     "scripts": {

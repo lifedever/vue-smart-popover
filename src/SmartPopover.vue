@@ -80,13 +80,6 @@
                         $content.style.width = this.width + 'px'
                         $content.style.left = offsetLeft + 'px'
                         $content.style.top = (offsetTop + refHeight) + 1 + 'px'
-
-                        let popHeight = $content.clientHeight + $content.offsetTop
-                        let winHeight = document.documentElement.clientHeight || window.innerHeight
-
-                        console.log('popHeight', popHeight)
-                        console.log('winHeight', winHeight)
-
                         if (this.height) {
                             this.$refs.content.style.height = this.height + 'px'
                         } else {
@@ -103,9 +96,7 @@
                     if (popHeight > winHeight) {
                         let $cnt = this.$refs.content;
                         let originalHeight = $cnt.clientHeight;
-                        console.log('originalHeight', originalHeight);
                         let diff = popHeight - winHeight;
-                        console.log(diff);
                         $cnt.style.height = (originalHeight - diff - 8) + 'px';
                     }
                 }

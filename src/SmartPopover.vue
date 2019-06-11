@@ -9,7 +9,7 @@
             <div v-if="visible" class="smart-popover-wrapper" ref="popContent">
                 <div class="smart-popover-title" v-if="title">
                     {{title}}
-                    <div class="close" @click="close">
+                    <div class="smart-popover-close" @click="close">
                         <i class="iconfont icon-baseline-close-px"></i>
                     </div>
                 </div>

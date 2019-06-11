@@ -16,6 +16,9 @@
                 <div class="content" ref="content">
                     <slot name="content"></slot>
                 </div>
+                <div class="footer" ref="footer" v-if="$slots.footer">
+                    <slot name="footer"></slot>
+                </div>
             </div>
         </transition>
     </div>
@@ -61,7 +64,7 @@
                 }
             }
         },
-        updated(){
+        updated() {
             this.dynamicCalculateHeight()
         },
         methods: {
@@ -92,17 +95,19 @@
                     })
                 }
             },
-            dynamicCalculateHeight(){
+            dynamicCalculateHeight() {
                 let $content = this.$refs['popContent']
-                let popHeight = $content.clientHeight + $content.offsetTop
-                let winHeight = document.documentElement.clientHeight || window.innerHeight
-                if (popHeight > winHeight) {
-                    let $cnt = this.$refs.content;
-                    let originalHeight = $cnt.clientHeight;
-                    console.log('originalHeight', originalHeight);
-                    let diff = popHeight - winHeight;
-                    console.log(diff);
-                    $cnt.style.height = (originalHeight - diff - 8) + 'px';
+                if ($content) {
+                    let popHeight = $content.clientHeight + $content.offsetTop
+                    let winHeight = document.documentElement.clientHeight || window.innerHeight
+                    if (popHeight > winHeight) {
+                        let $cnt = this.$refs.content;
+                        let originalHeight = $cnt.clientHeight;
+                        console.log('originalHeight', originalHeight);
+                        let diff = popHeight - winHeight;
+                        console.log(diff);
+                        $cnt.style.height = (originalHeight - diff - 8) + 'px';
+                    }
                 }
             },
             close() {

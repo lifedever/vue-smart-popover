@@ -16,6 +16,9 @@
                 <div>这是一段简单的描述文字，描述得好不好呢</div>
                 <div>这是一段简单的描述文字，描述得好不好呢</div>
             </div>
+            <div slot="footer">
+                你好啊再见
+            </div>
         </smart-popover>
     </div>
 </template>

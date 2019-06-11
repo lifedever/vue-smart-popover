@@ -42,7 +42,7 @@
             },
             width: {
                 type: [String, Number],
-                default: 250
+                default: 280
             }
         },
         watch: {

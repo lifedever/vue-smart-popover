@@ -7,16 +7,16 @@
                     :enter-active-class="animation? 'popover-slideup': ''"
                     :leave-active-class="animation? 'popover-slidedown': ''">
             <div v-if="visible" class="smart-popover-wrapper" ref="popContent">
-                <div class="title" v-if="title">
+                <div class="smart-popover-title" v-if="title">
                     {{title}}
                     <div class="close" @click="close">
                         <i class="iconfont icon-baseline-close-px"></i>
                     </div>
                 </div>
-                <div class="content" ref="content">
+                <div class="smart-popover-content" ref="content">
                     <slot name="content"></slot>
                 </div>
-                <div class="footer" ref="footer" v-if="$slots.footer">
+                <div class="smart-popover-footer" ref="footer" v-if="$slots.footer">
                     <slot name="footer"></slot>
                 </div>
             </div>

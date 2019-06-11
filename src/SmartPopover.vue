@@ -6,7 +6,12 @@
         <transition name="xxx"
                     :enter-active-class="animation? 'popover-slideup': ''"
                     :leave-active-class="animation? 'popover-slidedown': ''">
-            <div v-if="visible" class="smart-popover-wrapper" ref="popContent">
+            <div v-if="visible"
+                 v-click-outside:mousedown.capture="handleClose"
+                 v-click-outside:touchstart.capture="handleClose"
+                 v-click-outside.capture="handleClose"
+                 class="smart-popover-wrapper"
+                 ref="popContent">
                 <div class="smart-popover-title" v-if="title">
                     {{title}}
                     <div class="smart-popover-close" @click="close">
@@ -25,6 +30,7 @@
 </template>
 
 <script>
+    import {directive as clickOutside} from 'v-click-outside-x';
     export default {
         name: "SmartPopover",
         mounted() {
@@ -35,6 +41,7 @@
                 visible: false
             }
         },
+        directives: { clickOutside },
         props: {
             animation: {
                 type: Boolean,
@@ -54,13 +61,9 @@
         watch: {
             visible(value) {
                 if (value) {
-                    this.$nextTick(() => {
-                        window.addEventListener('click', this.bindClickOutside)
-                    })
                     this.$emit('show')
                 } else {
                     this.$emit('hide')
-                    window.removeEventListener('click', this.bindClickOutside)
                 }
             }
         },
@@ -68,6 +71,9 @@
             this.dynamicCalculateHeight()
         },
         methods: {
+            handleClose(){
+                this.visible = false
+            },
             handClick() {
                 let $ref = this.$refs['popRef']
                 let refHeight = $ref.clientHeight
@@ -102,11 +108,6 @@
                 }
             },
             close() {
-                this.visible = false
-            },
-            bindClickOutside(e) {
-                if (this.$refs['popContent'] && this.$refs['popContent'].contains(e.target))
-                    return;
                 this.visible = false
             }
         }

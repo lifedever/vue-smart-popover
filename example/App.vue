@@ -20,6 +20,11 @@
                 你好啊再见
             </div>
         </smart-popover>
+       &nbsp;
+       &nbsp;
+       &nbsp;
+       &nbsp;
+        <a href="#" @click.prevent="clickOther">点击外部</a>
     </div>
 </template>
 
@@ -29,6 +34,9 @@
         methods: {
             clickMe() {
 
+            },
+            clickOther(){
+                console.log('clickOther')
             }
         }
     }
@@ -36,8 +44,6 @@
 
 <style>
     #app {
-        display: flex;
-        justify-content: center;
-        padding-top: 60px;
+        padding: 200px;
     }
 </style>

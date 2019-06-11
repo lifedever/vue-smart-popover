@@ -89,5 +89,4 @@
 
 <style lang="less">
     @import "./SmartPopover";
-
 </style>

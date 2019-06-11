@@ -51,7 +51,9 @@
                     this.$nextTick(() => {
                         window.addEventListener('click', this.bindClickOutside)
                     })
+                    this.$emit('show')
                 } else {
+                    this.$emit('hide')
                     window.removeEventListener('click', this.bindClickOutside)
                 }
             }

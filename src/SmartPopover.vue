@@ -61,13 +61,15 @@
                 }
             }
         },
+        updated(){
+            this.dynamicCalculateHeight()
+        },
         methods: {
             handClick() {
                 let $ref = this.$refs['popRef']
                 let refHeight = $ref.clientHeight
                 let offsetLeft = $ref.offsetLeft
                 let offsetTop = $ref.offsetTop
-
                 this.visible = !this.visible
                 if (this.visible) {
                     this.$nextTick(() => {
@@ -85,16 +87,22 @@
                         if (this.height) {
                             this.$refs.content.style.height = this.height + 'px'
                         } else {
-                            if (popHeight > winHeight) {
-                                let $cnt = this.$refs.content;
-                                let originalHeight = $cnt.clientHeight;
-                                console.log('originalHeight', originalHeight);
-                                let diff = popHeight - winHeight;
-                                console.log(diff);
-                                $cnt.style.height = (originalHeight - diff - 8) + 'px';
-                            }
+                            this.dynamicCalculateHeight()
                         }
                     })
+                }
+            },
+            dynamicCalculateHeight(){
+                let $content = this.$refs['popContent']
+                let popHeight = $content.clientHeight + $content.offsetTop
+                let winHeight = document.documentElement.clientHeight || window.innerHeight
+                if (popHeight > winHeight) {
+                    let $cnt = this.$refs.content;
+                    let originalHeight = $cnt.clientHeight;
+                    console.log('originalHeight', originalHeight);
+                    let diff = popHeight - winHeight;
+                    console.log(diff);
+                    $cnt.style.height = (originalHeight - diff - 8) + 'px';
                 }
             },
             close() {

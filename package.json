@@ -1,6 +1,6 @@
 {
     "name": "vue-smart-popover",
-    "version": "1.0.19",
+    "version": "1.0.20",
     "private": false,
     "main": "./src/index.js",
     "license": "MIT",

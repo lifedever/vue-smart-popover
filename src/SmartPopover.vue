@@ -13,9 +13,12 @@
                  class="smart-popover-wrapper"
                  ref="popContent">
                 <div class="smart-popover-title" v-if="title">
+                    <div class="smart-popover-icon icon-left" @click="handBack">
+                        <i class="iconfont icon-return"></i>
+                    </div>
                     {{title}}
-                    <div class="smart-popover-close" @click="close">
-                        <i class="iconfont icon-baseline-close-px"></i>
+                    <div class="smart-popover-icon icon-right" @click="close">
+                        <i class="iconfont icon-close"></i>
                     </div>
                 </div>
                 <div class="smart-popover-content" ref="content">
@@ -60,6 +63,7 @@
         },
         watch: {
             visible(value) {
+                console.log('visible', value)
                 if (value) {
                     this.$emit('show')
                 } else {
@@ -71,7 +75,10 @@
             this.dynamicCalculateHeight()
         },
         methods: {
-            handleClose(){
+            handleClose(e){
+                console.log(e.target)
+                if(this.$refs['popRef'].contains(e.target))
+                    return false
                 this.visible = false
             },
             handClick() {
@@ -109,6 +116,9 @@
             },
             close() {
                 this.visible = false
+            },
+            handBack(){
+                this.$emit('back')
             }
         }
     }

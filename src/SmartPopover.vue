@@ -69,7 +69,6 @@
         },
         watch: {
             visible(value) {
-                console.log('visible', value)
                 if (value) {
                     this.$emit('show')
                 } else {
@@ -82,7 +81,6 @@
         },
         methods: {
             handleClose(e){
-                console.log(e.target)
                 if(this.$refs['popRef'].contains(e.target))
                     return false
                 this.visible = false

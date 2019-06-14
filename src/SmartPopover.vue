@@ -14,7 +14,6 @@
                  ref="popContent">
                 <div class="smart-popover-title" v-if="title">
                     <div class="smart-popover-icon icon-left"
-                         v-if="showBack"
                          @click="handBack">
                         <i class="iconfont icon-return"></i>
                     </div>

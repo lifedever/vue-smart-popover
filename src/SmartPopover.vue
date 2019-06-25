@@ -110,10 +110,11 @@
             dynamicCalculateHeight() {
                 let $content = this.$refs['popContent']
                 if ($content) {
-                    let popHeight = $content.clientHeight + $content.offsetTop
+                    let offsetTop = $content.getBoundingClientRect().top
+                    let popHeight = $content.clientHeight + offsetTop
                     let winHeight = document.documentElement.clientHeight || window.innerHeight
                     console.log('clientHeight', $content.clientHeight)
-                    console.log('offsetTop', $content.offsetTop)
+                    console.log('offsetTop', offsetTop)
                     console.log('popHeight', popHeight)
                     console.log('winHeight', winHeight)
                     if (popHeight > winHeight) {

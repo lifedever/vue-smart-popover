@@ -77,7 +77,9 @@
             }
         },
         updated() {
-            this.dynamicCalculateHeight()
+            this.$nextTick(() => {
+                this.dynamicCalculateHeight()
+            })
         },
         methods: {
             handleClose(e){

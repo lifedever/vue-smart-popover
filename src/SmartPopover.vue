@@ -110,11 +110,14 @@
                 if ($content) {
                     let popHeight = $content.clientHeight + $content.offsetTop
                     let winHeight = document.documentElement.clientHeight || window.innerHeight
+                    console.log('popHeight', popHeight)
+                    console.log('winHeight', winHeight)
                     if (popHeight > winHeight) {
                         let $cnt = this.$refs.content;
                         let originalHeight = $cnt.clientHeight;
                         let diff = popHeight - winHeight;
                         $cnt.style.height = (originalHeight - diff - 8) + 'px';
+                        console.log('originalHeight', originalHeight)
                     }
                 }
             },

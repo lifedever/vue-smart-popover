@@ -36,6 +36,7 @@
 
 <script>
     import {directive as clickOutside} from 'v-click-outside-x';
+
     export default {
         name: "SmartPopover",
         mounted() {
@@ -46,7 +47,7 @@
                 visible: false
             }
         },
-        directives: { clickOutside },
+        directives: {clickOutside},
         props: {
             showBack: {
                 type: Boolean,
@@ -82,8 +83,8 @@
             })
         },
         methods: {
-            handleClose(e){
-                if(this.$refs['popRef'].contains(e.target))
+            handleClose(e) {
+                if (this.$refs['popRef'].contains(e.target))
                     return false
                 this.visible = false
             },
@@ -99,37 +100,37 @@
                         $content.style.width = this.width + 'px'
                         $content.style.left = offsetLeft + 'px'
                         $content.style.top = (offsetTop + refHeight) + 1 + 'px'
-                        if (this.height) {
-                            this.$refs.content.style.height = this.height + 'px'
-                        } else {
-                            this.dynamicCalculateHeight()
-                        }
+                        this.dynamicCalculateHeight()
                     })
                 }
             },
             dynamicCalculateHeight() {
-                let $content = this.$refs['popContent']
-                if ($content) {
-                    let offsetTop = $content.getBoundingClientRect().top
-                    let popHeight = $content.clientHeight + offsetTop
-                    let winHeight = document.documentElement.clientHeight || window.innerHeight
-                    console.log('clientHeight', $content.clientHeight)
-                    console.log('offsetTop', offsetTop)
-                    console.log('popHeight', popHeight)
-                    console.log('winHeight', winHeight)
-                    if (popHeight > winHeight) {
-                        let $cnt = this.$refs.content;
-                        let originalHeight = $cnt.clientHeight;
-                        let diff = popHeight - winHeight;
-                        $cnt.style.height = (originalHeight - diff - 8) + 'px';
-                        console.log('originalHeight', originalHeight)
+                if (this.height) {
+                    this.$refs.content.style.height = this.height + 'px'
+                } else {
+                    let $content = this.$refs['popContent']
+                    if ($content) {
+                        let offsetTop = $content.getBoundingClientRect().top
+                        let popHeight = $content.clientHeight + offsetTop
+                        let winHeight = document.documentElement.clientHeight || window.innerHeight
+                        console.log('clientHeight', $content.clientHeight)
+                        console.log('offsetTop', offsetTop)
+                        console.log('popHeight', popHeight)
+                        console.log('winHeight', winHeight)
+                        if (popHeight > winHeight) {
+                            let $cnt = this.$refs.content;
+                            let originalHeight = $cnt.clientHeight;
+                            let diff = popHeight - winHeight;
+                            $cnt.style.height = (originalHeight - diff - 8) + 'px';
+                            console.log('originalHeight', originalHeight)
+                        }
                     }
                 }
             },
             close() {
                 this.visible = false
             },
-            handBack(){
+            handBack() {
                 this.$emit('back')
             }
         }

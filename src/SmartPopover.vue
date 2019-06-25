@@ -112,6 +112,8 @@
                 if ($content) {
                     let popHeight = $content.clientHeight + $content.offsetTop
                     let winHeight = document.documentElement.clientHeight || window.innerHeight
+                    console.log('clientHeight', $content.clientHeight)
+                    console.log('offsetTop', $content.offsetTop)
                     console.log('popHeight', popHeight)
                     console.log('winHeight', winHeight)
                     if (popHeight > winHeight) {

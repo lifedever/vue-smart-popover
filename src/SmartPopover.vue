@@ -108,7 +108,8 @@
                 if (this.height) {
                     this.$refs.content.style.height = this.height + 'px'
                 } else {
-                    this.$refs.content.style.height = 'auto'
+                    if (this.$refs.content)
+                        this.$refs.content.style.height = 'auto'
                     let $content = this.$refs['popContent']
                     if ($content) {
                         let offsetTop = $content.getBoundingClientRect().top

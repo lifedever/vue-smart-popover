@@ -77,11 +77,11 @@
                 }
             }
         },
-        // updated() {
-        //     this.$nextTick(() => {
-        //         this.dynamicCalculateHeight()
-        //     })
-        // },
+        updated() {
+            this.$nextTick(() => {
+                this.dynamicCalculateHeight()
+            })
+        },
         methods: {
             handleClose(e) {
                 if (this.$refs['popRef'].contains(e.target))
@@ -108,8 +108,11 @@
                 if (this.height) {
                     this.$refs.content.style.height = this.height + 'px'
                 } else {
-                    if (this.$refs.content)
+                    let scrollTop
+                    if (this.$refs.content) {
                         this.$refs.content.style.height = 'auto'
+                        scrollTop = this.$refs.content.scrollTop
+                    }
                     let $content = this.$refs['popContent']
                     if ($content) {
                         let offsetTop = $content.getBoundingClientRect().top
@@ -127,6 +130,11 @@
                             console.log('originalHeight', originalHeight)
                         }
                     }
+                    this.$nextTick(() => {
+                        if (this.$refs.content && scrollTop) {
+                            this.$refs.content.scrollTop = scrollTop
+                        }
+                    })
                 }
             },
             close() {

@@ -77,11 +77,11 @@
                 }
             }
         },
-        updated() {
-            this.$nextTick(() => {
-                this.dynamicCalculateHeight()
-            })
-        },
+        // updated() {
+        //     this.$nextTick(() => {
+        //         this.dynamicCalculateHeight()
+        //     })
+        // },
         methods: {
             handleClose(e) {
                 if (this.$refs['popRef'].contains(e.target))

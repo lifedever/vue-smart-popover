@@ -80,7 +80,7 @@
         updated() {
             console.log('popover update')
             this.$nextTick(() => {
-                this.dynamicCalculateHeight()
+                // this.dynamicCalculateHeight()
             })
         },
         methods: {

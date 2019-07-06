@@ -78,6 +78,7 @@
             }
         },
         updated() {
+            console.log('popover update')
             this.$nextTick(() => {
                 this.dynamicCalculateHeight()
             })
@@ -111,7 +112,6 @@
                     let scrollTop
                     if (this.$refs.content) {
                         this.$refs.content.style.height = 'auto'
-                        scrollTop = this.$refs.content.scrollTop
                     }
                     let $content = this.$refs['popContent']
                     if ($content) {
@@ -130,11 +130,7 @@
                             console.log('originalHeight', originalHeight)
                         }
                     }
-                    this.$nextTick(() => {
-                        if (this.$refs.content && scrollTop) {
-                            this.$refs.content.scrollTop = scrollTop
-                        }
-                    })
+
                 }
             },
             close() {

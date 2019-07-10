@@ -23,7 +23,7 @@
                         <i class="iconfont icon-close"></i>
                     </div>
                 </div>
-                <div class="smart-popover-content" ref="content">
+                <div :class="['smart-popover-content', noPad? 'smart-popover-content-nopad': '']" ref="content">
                     <slot name="content"></slot>
                 </div>
                 <div class="smart-popover-footer" ref="footer" v-if="$slots.footer">
@@ -50,6 +50,10 @@
         directives: {clickOutside},
         props: {
             showBack: {
+                type: Boolean,
+                default: false
+            },
+            noPad: {
                 type: Boolean,
                 default: false
             },

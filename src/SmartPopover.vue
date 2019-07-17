@@ -49,6 +49,9 @@
         },
         directives: {clickOutside},
         props: {
+            disabled: {
+                type: Boolean
+            },
             showBack: {
                 type: Boolean,
                 default: false
@@ -94,7 +97,10 @@
                 this.visible = false
             },
             handClick() {
-                let $ref = this.$refs['popRef']
+                if (this.disabled) {
+                    return false
+                }
+                let $ref = this.$refs['popRef'];
                 let refHeight = $ref.clientHeight
                 let offsetLeft = $ref.offsetLeft
                 let offsetTop = $ref.offsetTop

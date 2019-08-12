@@ -106,6 +106,7 @@
                     if (ref.$el) {
                         ref = ref.$el
                     }
+                    console.log(ref, e.target)
                     if (ref) {
                         if (ref.contains(e.target)) {
                             return false

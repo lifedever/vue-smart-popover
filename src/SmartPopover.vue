@@ -76,7 +76,9 @@
             },
             closeExclude: {
                 type: Array,
-                default: []
+                default: () => {
+                    return []
+                }
             }
         },
         watch: {

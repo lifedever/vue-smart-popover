@@ -102,11 +102,7 @@
                     return false
                 }
                 for (const ele of this.closeExclude) {
-                    let ref = this.$parent.$refs[ele]
-                    if (ref.$el) {
-                        ref = ref.$el
-                    }
-                    console.log(ref, e.target)
+                    let ref = document.querySelector(ele)
                     if (ref) {
                         if (ref.contains(e.target)) {
                             return false

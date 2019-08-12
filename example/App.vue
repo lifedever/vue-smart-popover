@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <smart-popover title="这是标题啊这是标题" :close-exclude="['noCloseAnchor']">
+        <smart-popover title="这是标题啊这是标题" :close-exclude="['noCloseAnchorLink', 'noCloseAnchor']">
             <a href="#" @click.prevent="clickMe">点我弹出</a>
             <div slot="content">
                 <div>Smart Popover Content</div>
@@ -18,15 +18,21 @@
             </div>
         </smart-popover>
 
+        <m-link ref="noCloseAnchorLink" style="margin-left: 300px;">
+        点这里不关闭
+        </m-link>
         <a href="#"
            @click.prevent style="margin-left: 300px;"
            ref="noCloseAnchor">点这里不关闭</a>
+
     </div>
 </template>
 
 <script>
+    import MLink from "./components/MLink";
     export default {
         name: 'app',
+        components: {MLink},
         methods: {
             clickMe() {
 

@@ -103,6 +103,9 @@
                 }
                 for (const ele of this.closeExclude) {
                     let ref = this.$parent.$refs[ele]
+                    if (ref.$el) {
+                        ref = ref.$el
+                    }
                     if (ref) {
                         if (ref.contains(e.target)) {
                             return false

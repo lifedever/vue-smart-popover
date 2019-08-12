@@ -73,6 +73,10 @@
             },
             height: {
                 type: [String, Number],
+            },
+            closeExclude: {
+                type: Array,
+                default: []
             }
         },
         watch: {
@@ -92,8 +96,17 @@
         },
         methods: {
             handleClose(e) {
-                if (this.$refs['popRef'].contains(e.target))
+                if (this.$refs['popRef'].contains(e.target)) {
                     return false
+                }
+                for (const ele of this.closeExclude) {
+                    let ref = this.$parent.$refs[ele]
+                    if (ref) {
+                        if (ref.contains(e.target)) {
+                            return false
+                        }
+                    }
+                }
                 this.visible = false
             },
             handClick() {

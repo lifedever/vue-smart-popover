@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <smart-popover title="这是标题啊这是标题">
+        <smart-popover title="这是标题啊这是标题" :close-exclude="['noCloseAnchor']">
             <a href="#" @click.prevent="clickMe">点我弹出</a>
             <div slot="content">
                 <div>Smart Popover Content</div>
@@ -17,6 +17,10 @@
                 你好啊再见
             </div>
         </smart-popover>
+
+        <a href="#"
+           @click.prevent style="margin-left: 300px;"
+           ref="noCloseAnchor">点这里不关闭</a>
     </div>
 </template>
 

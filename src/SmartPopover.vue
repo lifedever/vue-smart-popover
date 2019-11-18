@@ -135,13 +135,15 @@
                 let offsetLeft = $ref.offsetLeft
                 let offsetTop = $ref.offsetTop
                 this.visible = !this.visible
-                if (this.visible && this.autoHeight) {
+                if (this.visible) {
                     this.$nextTick(() => {
                         let $content = this.$refs['popContent']
                         $content.style.width = this.width + 'px'
                         $content.style.left = offsetLeft + 'px'
                         $content.style.top = (offsetTop + refHeight) + 1 + 'px'
-                        this.dynamicCalculateHeight()
+                        if (this.autoHeight) {
+                            this.dynamicCalculateHeight();
+                        }
                     })
                 }
             },

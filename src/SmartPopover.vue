@@ -49,31 +49,44 @@
         },
         directives: {clickOutside},
         props: {
+            // 禁用
             disabled: {
                 type: Boolean
             },
+            // 显示返回按钮
             showBack: {
                 type: Boolean,
                 default: false
             },
+            // 取消内容内边距
             noPad: {
                 type: Boolean,
                 default: false
             },
+            // 有动画
             animation: {
                 type: Boolean,
                 default: true
             },
+            // 标题
             title: {
                 type: String
             },
+            // 宽度
             width: {
                 type: [String, Number],
                 default: 280
             },
+            // 高度
             height: {
                 type: [String, Number],
             },
+            // 内容区自动高度，
+            autoHeight: {
+                type: Boolean,
+                default: true
+            },
+            // 排除点击关闭对元素
             closeExclude: {
                 type: Array,
                 default: () => {
@@ -122,7 +135,7 @@
                 let offsetLeft = $ref.offsetLeft
                 let offsetTop = $ref.offsetTop
                 this.visible = !this.visible
-                if (this.visible) {
+                if (this.visible && this.autoHeight) {
                     this.$nextTick(() => {
                         let $content = this.$refs['popContent']
                         $content.style.width = this.width + 'px'

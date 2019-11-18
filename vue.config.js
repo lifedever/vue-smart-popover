@@ -1,4 +1,5 @@
 module.exports = {
+    outputDir: 'docs',
     pages: {
         index: {
             // page 的入口

@@ -6,7 +6,8 @@
     "license": "MIT",
     "scripts": {
         "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build --target lib --name smartPopover ./src/index.js"
+        "build": "vue-cli-service build --target lib --name smartPopover ./src/index.js",
+        "demo": "vue-cli-service build"
     },
     "dependencies": {
         "core-js": "^2.6.5",

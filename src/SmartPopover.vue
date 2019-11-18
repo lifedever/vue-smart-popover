@@ -116,9 +116,17 @@
                 }
                 for (const ele of this.closeExclude) {
                     let ref = document.querySelectorAll(ele)
+                    let popContainer = document.querySelectorAll('.smart-popover-wrapper')
                     if (ref) {
                         for (const r of ref) {
-                            if (r.contains(e.target)) {
+                            if (r.contains(e.target) ) {
+                                return false
+                            }
+                        }
+                    }
+                    if (popContainer) {
+                        for (const r of popContainer) {
+                            if (r.contains(e.target) ) {
                                 return false
                             }
                         }

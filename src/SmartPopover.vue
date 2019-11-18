@@ -103,7 +103,6 @@
                 }
                 for (const ele of this.closeExclude) {
                     let ref = document.querySelectorAll(ele)
-                    console.log(ref)
                     if (ref) {
                         for (const r of ref) {
                             if (r.contains(e.target)) {

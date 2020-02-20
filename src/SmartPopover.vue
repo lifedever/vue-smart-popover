@@ -97,8 +97,8 @@
         },
         watch: {
             visible(value) {
+                this.$emit('handleVisible', value)
                 if (value) {
-
                     this.$emit('show')
                 } else {
                     this.$emit('hide')

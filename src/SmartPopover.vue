@@ -1,6 +1,6 @@
 <template>
-    <div class="smart-popover">
-        <div class="smart-popover-ref" ref="popRef" @click.prevent.stop="handClick()">
+    <span class="smart-popover">
+        <div :class="['smart-popover-ref', block? 'block': null]" ref="popRef" @click.prevent.stop="handClick()">
             <slot></slot>
         </div>
         <transition name="xxx"
@@ -31,7 +31,7 @@
                 </div>
             </div>
         </transition>
-    </div>
+    </span>
 </template>
 
 <script>
@@ -49,6 +49,7 @@
         },
         directives: {clickOutside},
         props: {
+            block: Boolean,
             // 禁用
             disabled: {
                 type: Boolean

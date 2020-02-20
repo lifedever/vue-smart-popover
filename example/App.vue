@@ -45,6 +45,17 @@
             </div>
         </smart-popover>
 
+        <smart-popover block>
+            <div>
+                <a href="#" id="">
+                    这个是新的一行
+                </a>
+            </div>
+            <div slot="content">
+                新的一行吗
+            </div>
+        </smart-popover>
+
         <hr>
         <h3>所有属性如下：</h3>
         <pre>{{`props: {

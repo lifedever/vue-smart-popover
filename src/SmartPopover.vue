@@ -44,7 +44,8 @@
         },
         data() {
             return {
-                visible: false
+                visible: false,
+                contentWidth: null
             }
         },
         directives: {clickOutside},
@@ -76,7 +77,6 @@
             // 宽度
             width: {
                 type: [String, Number],
-                default: 280
             },
             // 高度
             height: {
@@ -98,6 +98,7 @@
         watch: {
             visible(value) {
                 if (value) {
+
                     this.$emit('show')
                 } else {
                     this.$emit('hide')
@@ -145,9 +146,12 @@
                 let offsetTop = $ref.offsetTop
                 this.visible = !this.visible
                 if (this.visible) {
+                    let refWidth = $ref.clientWidth
+                    console.log('refWidth', refWidth)
+                    this.contentWidth = this.width  || refWidth
                     this.$nextTick(() => {
                         let $content = this.$refs['popContent']
-                        $content.style.width = this.width + 'px'
+                        $content.style.width = this.contentWidth + 'px'
                         $content.style.left = offsetLeft + 'px'
                         $content.style.top = (offsetTop + refHeight) + 1 + 'px'
                         if (this.autoHeight) {
@@ -160,7 +164,6 @@
                 if (this.height) {
                     this.$refs.content.style.height = this.height + 'px'
                 } else {
-                    let scrollTop
                     if (this.$refs.content) {
                         this.$refs.content.style.height = 'auto'
                     }

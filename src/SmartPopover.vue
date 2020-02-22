@@ -12,7 +12,7 @@
                  v-click-outside.capture="handleClose"
                  class="smart-popover-wrapper"
                  ref="popContent">
-                <div class="smart-popover-title" v-if="title">
+                <div class="smart-popover-title" ref="title" v-if="title">
                     <div class="smart-popover-icon icon-left"
                          v-if="showBack"
                          @click="handBack">
@@ -121,14 +121,14 @@
                     let popContainer = document.querySelectorAll('.smart-popover-wrapper')
                     if (ref) {
                         for (const r of ref) {
-                            if (r.contains(e.target) ) {
+                            if (r.contains(e.target)) {
                                 return false
                             }
                         }
                     }
                     if (popContainer) {
                         for (const r of popContainer) {
-                            if (r.contains(e.target) ) {
+                            if (r.contains(e.target)) {
                                 return false
                             }
                         }
@@ -148,14 +148,16 @@
                 if (this.visible) {
                     let refWidth = $ref.clientWidth
                     console.log('refWidth', refWidth)
-                    this.contentWidth = this.width  || refWidth
+                    this.contentWidth = this.width || refWidth
                     this.$nextTick(() => {
                         let $content = this.$refs['popContent']
                         $content.style.width = this.contentWidth + 'px'
                         $content.style.left = offsetLeft + 'px'
                         $content.style.top = (offsetTop + refHeight) + 1 + 'px'
                         if (this.autoHeight) {
-                            this.dynamicCalculateHeight();
+                            this.$nextTick(() => {
+                                this.dynamicCalculateHeight();
+                            })
                         }
                     })
                 }
@@ -167,21 +169,25 @@
                     if (this.$refs.content) {
                         this.$refs.content.style.height = 'auto'
                     }
-                    let $content = this.$refs['popContent']
-                    if ($content) {
-                        let offsetTop = $content.getBoundingClientRect().top
-                        let popHeight = $content.clientHeight + offsetTop
+                    let $contentWrapper = this.$refs['popContent']
+                    let $footer = this.$refs['footer']
+                    if ($contentWrapper) {
+                        // 内容据顶部的高度
+
+                        let popHeight = $contentWrapper.clientHeight + $contentWrapper.offsetTop
                         let winHeight = document.documentElement.clientHeight || window.innerHeight
-                        console.log('clientHeight', $content.clientHeight)
-                        console.log('offsetTop', offsetTop)
+
                         console.log('popHeight', popHeight)
                         console.log('winHeight', winHeight)
+
                         if (popHeight > winHeight) {
-                            let $cnt = this.$refs.content;
-                            let originalHeight = $cnt.clientHeight;
                             let diff = popHeight - winHeight;
-                            $cnt.style.height = (originalHeight - diff - 8) + 'px';
+                            let $cnt = this.$refs.content;
+                            let originalHeight = $cnt.clientHeight
+                            let height = originalHeight - diff - 28
                             console.log('originalHeight', originalHeight)
+                            console.log('diff', diff, height)
+                            $cnt.style.height = height+ 'px';
                         }
                     }
 
@@ -192,6 +198,11 @@
             },
             handBack() {
                 this.$emit('back')
+            },
+            setAutoHeight() {
+                this.$nextTick(() => {
+                    this.dynamicCalculateHeight()
+                })
             }
         }
     }

@@ -1,13 +1,53 @@
 <template>
     <div id="app">
-        <smart-popover title="常规Popover" :close-exclude="['.a']">
+        <smart-popover ref="popRef" title="常规Popover" :close-exclude="['.a']">
             <a href="#" @click.prevent="clickMe">点我弹出一个常规的Popover</a>
             <div slot="content">
-                <div>Smart Popover Content，参考代码如下：</div>
-                <pre>{{source1}}</pre>
+                <template v-if="!visible">
+                    <div>Smart Popover Content，参考代码如下：</div>
+                    <pre>{{source1}}</pre>
+                </template>
+                <div v-else>
+                    <p>
+                        Vue-Smart-Popover
+                    </p>
+                    <p>
+                        Vue-Smart-Popover
+                    </p>
+                    <p>
+                        Vue-Smart-Popover
+                    </p>
+                    <p>
+                        Vue-Smart-Popover
+                    </p>
+                    <p>
+                        Vue-Smart-Popover
+                    </p>
+                    <p>
+                        Vue-Smart-Popover
+                    </p>
+                    <p>
+                        Vue-Smart-Popover
+                    </p>
+                    <p>
+                        Vue-Smart-Popover
+                    </p>
+                    <p>
+                        Vue-Smart-Popover
+                    </p>
+                    <p>
+                        Vue-Smart-Popover
+                    </p>
+                </div>
+                <a href="#" @click.prevent="doClick">
+                    点我
+                </a>
             </div>
             <div slot="footer">
                 footer
+                <a href="#" @click.prevent="doClick">
+                    点我
+                </a>
             </div>
         </smart-popover>
 
@@ -121,10 +161,15 @@
     <div slot="footer">
         ...这是footer的内容
     </div>
-</smart-popover>`
+</smart-popover>`,
+                visible: false
             }
         },
         methods: {
+            doClick() {
+                this.visible = !this.visible
+                this.$refs['popRef'].setAutoHeight()
+            },
             clickMe() {
 
             },

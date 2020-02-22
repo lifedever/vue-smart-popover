@@ -170,25 +170,28 @@
                         this.$refs.content.style.height = 'auto'
                     }
                     let $contentWrapper = this.$refs['popContent']
-                    let $footer = this.$refs['footer']
                     if ($contentWrapper) {
-                        // 内容据顶部的高度
+                        let $cnt = this.$refs.content;
+                        setTimeout(() => {
+                            // 内容据顶部的高度
+                            let clientRect = $contentWrapper.getBoundingClientRect()
+                            console.log('clientRect', clientRect)
 
-                        let popHeight = $contentWrapper.clientHeight + $contentWrapper.getBoundingClientRect().top
-                        let winHeight = document.documentElement.clientHeight || window.innerHeight
+                            let popHeight = clientRect.bottom
+                            let winHeight = window.innerHeight
 
-                        console.log('popHeight', popHeight)
-                        console.log('winHeight', winHeight)
+                            console.log('popHeight', popHeight)
+                            console.log('winHeight', winHeight)
 
-                        if (popHeight > winHeight) {
-                            let diff = popHeight - winHeight;
-                            let $cnt = this.$refs.content;
-                            let originalHeight = $cnt.clientHeight
-                            let height = originalHeight - diff - 28
-                            console.log('originalHeight', originalHeight)
-                            console.log('diff', diff, height)
-                            $cnt.style.height = height+ 'px';
-                        }
+                            if (popHeight > winHeight) {
+                                let diff = popHeight - winHeight;
+                                let originalHeight = $cnt.clientHeight
+                                let height = originalHeight - diff - 28
+                                // console.log('originalHeight', originalHeight)
+                                // console.log('diff', diff, height)
+                                $cnt.style.height = height + 'px';
+                            }
+                        }, 100)
                     }
 
                 }

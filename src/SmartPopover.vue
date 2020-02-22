@@ -174,7 +174,7 @@
                     if ($contentWrapper) {
                         // 内容据顶部的高度
 
-                        let popHeight = $contentWrapper.clientHeight + $contentWrapper.offsetTop
+                        let popHeight = $contentWrapper.clientHeight + $contentWrapper.getBoundingClientRect().top
                         let winHeight = document.documentElement.clientHeight || window.innerHeight
 
                         console.log('popHeight', popHeight)

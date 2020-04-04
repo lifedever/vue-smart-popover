@@ -113,7 +113,7 @@
         },
         methods: {
             handleClose(e) {
-                if (this.$refs['popRef'].contains(e.target)) {
+                if (this.$refs['popRef'] && this.$refs['popRef'].contains(e.target)) {
                     return false
                 }
                 for (const ele of this.closeExclude) {

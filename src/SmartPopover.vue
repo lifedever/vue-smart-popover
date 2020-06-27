@@ -187,8 +187,6 @@
                                 let diff = popHeight - winHeight;
                                 let originalHeight = $cnt.clientHeight
                                 let height = originalHeight - diff - 28
-                                // console.log('originalHeight', originalHeight)
-                                // console.log('diff', diff, height)
                                 $cnt.style.height = height + 'px';
                             }
                         }, 100)

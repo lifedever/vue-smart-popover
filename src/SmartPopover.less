@@ -1,9 +1,11 @@
-@import (css) "./iconfont/iconfont.css";
+@import "./iconfont/iconfont";
 
 .smart-popover {
     box-sizing: border-box;
+
     .smart-popover-ref {
         display: inline-block;
+
         &.block {
             display: block;
         }
@@ -20,6 +22,7 @@
         pointer-events: auto;
         background: #fff;
         box-shadow: 0 8px 16px -4px rgba(9, 45, 66, .2), 0 0 0 1px rgba(9, 45, 66, .05);
+
         .smart-popover-title {
             height: 38px;
             line-height: 40px;
@@ -39,12 +42,15 @@
                 height: 38px;
                 line-height: 38px;
                 text-align: center;
-                i.iconfont  {
+
+                i.iconfont {
                     font-size: 22px;
                 }
+
                 &.icon-left {
                     left: 0;
                 }
+
                 &.icon-right {
                     right: 0;
                 }
@@ -54,13 +60,16 @@
         .smart-popover-content {
             padding: 12px 15px;
             overflow: auto;
+
             &.smart-popover-content-nopad {
                 padding: 0;
             }
         }
+
         .smart-popover-footer {
             padding: 8px 15px;
         }
+
         .smart-popover-footer {
             border-top: 1px solid rgba(0, 0, 0, .1);
         }

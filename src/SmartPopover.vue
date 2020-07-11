@@ -18,7 +18,8 @@
                          @click="handBack">
                         <i class="iconfont icon-return"></i>
                     </div>
-                    {{title}}
+                    <span v-if="title">{{title}}</span>
+                    <slot v-else name="title"></slot>
                     <div class="smart-popover-icon icon-right" @click="close">
                         <i class="iconfont icon-close"></i>
                     </div>

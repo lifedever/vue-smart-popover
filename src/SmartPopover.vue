@@ -12,7 +12,7 @@
                  v-click-outside.capture="handleClose"
                  class="smart-popover-wrapper"
                  ref="popContent">
-                <div class="smart-popover-title" ref="title" v-if="title">
+                <div class="smart-popover-title" ref="title" v-if="title || $slots.title">
                     <div class="smart-popover-icon icon-left"
                          v-if="showBack"
                          @click="handBack">
